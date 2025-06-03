@@ -1,0 +1,324 @@
+#Friday_version_8
+
+#Импорт библиотек
+import speech_recognition as sr
+import pyttsx3
+import webbrowser as wb
+from datetime import datetime
+from g4f.client import Client
+import requests
+import subprocess
+
+#Инициализация библиотек
+recognizer = sr.Recognizer()
+engine = pyttsx3.init()
+
+#Настройка голоса
+engine.setProperty('rate', 237)
+engine.setProperty('volume', 0.9)
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[0].id)
+
+#Вводная фраза
+print("Пятница сказала: Приветствую, чем я могу помочь?")
+engine.say("Приветствую, чем я могу помочь")
+engine.runAndWait()
+
+#Код-слова
+music_1 = "Музыку"
+music_2 = "музыку"
+
+time_1 = "Времени"
+time_2 = "времени"
+
+google_1 = "Гугл"
+google_2 = "гугл"
+google_3 = "Google"
+google_4 = "google"
+
+gpt_1 = "Пятница"
+gpt_2 = "пятница"
+gpt_3 = "Пятнеца"
+gpt_4 = "пятнеца"
+
+weather_1 = "Погод"
+weather_2 = "погод"
+weather_3 = "Пагод"
+weather_4 = "пагод"
+
+close_1 = "Закройся"
+close_2 = "закройся"
+close_3 = "Выключись"
+close_4 = "выключись"
+
+discord_1 = "Дискорд"
+discord_2 = "дискорд"
+discord_3 = "Discord"
+discord_4 = "discord"
+
+game_1 = "Minecraft"
+game_2 = "minecraft"
+
+steam_1 = "Steam"
+steam_2 = "steam"
+steam_3 = "Стим"
+steam_4 = "стим"
+
+yutube_1 = "ютуб"
+yutube_2 = "Ютуб"
+yutube_3 = "YouTube"
+yutube_4 = "youTube"
+
+ozon_1 = "Ozon"
+ozon_2 = "ozon"
+ozon_3 = "Озон"
+ozon_4 = "озон"
+
+anime_1 = "Аниме"
+anime_2 = "аниме"
+anime_3 = "Anime"
+anime_4 = "anime"
+
+dispec_1 = "Диспечер задач"
+dispec_2 = "диспечер задач"
+dispec_3 = "Диспетчер задач"
+dispec_4 = "диспетчер задач"
+
+vpn_1 = "Камера"
+vpn_2 = "камера"
+vpn_3 = "Камеру"
+vpn_4 = "камеру"
+
+#Ввод голоса в программу
+while True:
+        with sr.Microphone() as source:
+                audio = recognizer.listen(source)
+                data = recognizer.recognize_google(audio, language="ru-RU")
+
+                print("Вы сказали:",data)
+
+                #Музыка
+                if music_1 in data:
+                                print("Пятница сказала: Включаю")
+                                engine.say("Включаю")
+                                engine.runAndWait()
+                                wb.open('https://rutube.ru/video/d3559012f6c36b97735b312f83b1df52/')
+                if music_2 in data:
+                                print("Пятница сказала: Включаю")
+                                engine.say("Включаю")
+                                engine.runAndWait()
+                                wb.open('https://rutube.ru/video/d3559012f6c36b97735b312f83b1df52/')
+                                
+                #Время
+                if time_1 in data:
+                                now = datetime.now()
+                                current_time = now.strftime("%H:%M:%S") 
+                                print("Пятница сказала:",current_time)
+                                engine.say(current_time)
+                                engine.runAndWait()
+                if time_2 in data:
+                                now = datetime.now()
+                                current_time = now.strftime("%H:%M:%S") 
+                                print("Пятница сказала:",current_time)
+                                engine.say(current_time)
+                                engine.runAndWait()
+
+                #Гугл
+                if google_1 in data:
+                                print("Пятница сказала: Открываю")
+                                engine.say("Открываю")
+                                engine.runAndWait()
+                                wb.open('https://www.google.com/')
+                if google_2 in data:
+                                print("Пятница сказала: Открываю")
+                                engine.say("Открываю")
+                                engine.runAndWait()
+                                wb.open('https://www.google.com/')
+                if google_3 in data:
+                                print("Пятница сказала: Открываю")
+                                engine.say("Открываю")
+                                engine.runAndWait()
+                                wb.open('https://www.google.com/')
+                if google_4 in data:
+                                print("Пятница сказала: Открываю")
+                                engine.say("Открываю")
+                                engine.runAndWait()
+                                wb.open('https://www.google.com/')
+
+                #Погода
+                if weather_1 in data:
+                            city = 'Санкт-Петербург'
+                            url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=metric&lang=ru&appid=79d1ca96933b0328e1c7e3e7a26cb347'
+                            weather_data = requests.get(url).json()
+                            temperature = round(weather_data['main']['temp'])
+                            print("Пятница сказала:",str(temperature),"Градусов цельсия")
+                            engine.say(str(temperature)+"Градусов цельсия")
+                            engine.runAndWait()
+                if weather_2 in data:
+                            city = 'Санкт-Петербург'
+                            url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=metric&lang=ru&appid=79d1ca96933b0328e1c7e3e7a26cb347'
+                            weather_data = requests.get(url).json()
+                            temperature = round(weather_data['main']['temp'])
+                            print("Пятница сказала:",str(temperature),"Градусов цельсия")
+                            engine.say(str(temperature)+"Градусов цельсия")
+                            engine.runAndWait()
+                if weather_3 in data:
+                            city = 'Санкт-Петербург'
+                            url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=metric&lang=ru&appid=79d1ca96933b0328e1c7e3e7a26cb347'
+                            weather_data = requests.get(url).json()
+                            temperature = round(weather_data['main']['temp'])
+                            print("Пятница сказала:",str(temperature),"Градусов цельсия")
+                            engine.say(str(temperature)+"Градусов цельсия")
+                            engine.runAndWait()
+                if weather_4 in data:
+                            city = 'Санкт-Петербург'
+                            url = 'https://api.openweathermap.org/data/2.5/weather?q='+city+'&units=metric&lang=ru&appid=79d1ca96933b0328e1c7e3e7a26cb347'
+                            weather_data = requests.get(url).json()
+                            temperature = round(weather_data['main']['temp'])
+                            print("Пятница сказала:",str(temperature),"Градусов цельсия")
+                            engine.say(str(temperature)+"Градусов цельсия")
+                            engine.runAndWait()
+
+                #Чат GPT
+                if gpt_1 in data:
+                    client = Client()
+                    response = client.chat.completions.create(
+                        model="gpt-4o-mini",
+                        messages=[{"role": "user", "content": data}],
+                        web_search=False
+                    )
+                    print("Пятница сказала:",response.choices[0].message.content)
+                    engine.say(response.choices[0].message.content)  
+                    engine.runAndWait()
+                if gpt_2 in data:
+                    client = Client()
+                    response = client.chat.completions.create(
+                        model="gpt-4o-mini",
+                        messages=[{"role": "user", "content": data}],
+                        web_search=False
+                    )
+                    print("Пятница сказала:",response.choices[0].message.content)
+                    engine.say(response.choices[0].message.content)  
+                    engine.runAndWait()
+                if gpt_3 in data:
+                    client = Client()
+                    response = client.chat.completions.create(
+                        model="gpt-4o-mini",
+                        messages=[{"role": "user", "content": data}],
+                        web_search=False
+                    )
+                    print("Пятница сказала:",response.choices[0].message.content)
+                    engine.say(response.choices[0].message.content)  
+                    engine.runAndWait()
+                if gpt_4 in data:
+                    client = Client()
+                    response = client.chat.completions.create(
+                        model="gpt-4o-mini",
+                        messages=[{"role": "user", "content": data}],
+                        web_search=False
+                    )
+                    print("Пятница сказала:",response.choices[0].message.content)
+                    engine.say(response.choices[0].message.content)  
+                    engine.runAndWait()
+                
+                #Выключение
+                if close_1 in data:
+                    print("Пятница сказала: Выключаюсь")
+                    engine.say("Выключаюсь")
+                    engine.runAndWait()
+                    exit()      
+                if close_2 in data:
+                    print("Пятница сказала: Выключаюсь")
+                    engine.say("Выключаюсь")
+                    engine.runAndWait()
+                    exit()
+                if close_3 in data:
+                    print("Пятница сказала: Выключаюсь")
+                    engine.say("Выключаюсь")
+                    engine.runAndWait()
+                    exit() 
+                if close_4 in data:
+                    print("Пятница сказала: Выключаюсь")
+                    engine.say("Выключаюсь")  
+                    engine.runAndWait()
+                    exit()
+
+                #Игра
+                if game_1 in data:
+                    print("Пятница сказала: Запускаю игру")
+                    engine.say("Запускаю игру")
+                    engine.runAndWait
+                    subprocess.Popen("C:\\Users\\zhosha\\AppData\\Roaming\\.minecraft\\TLauncher")
+                if game_2 in data:
+                    print("Пятница сказала: Запускаю игру")
+                    engine.say("Запускаю игру")
+                    engine.runAndWait()
+                    subprocess.Popen("C:\\Users\\zhosha\\AppData\\Roaming\\.minecraft\\TLauncher")
+
+                #Ютуб
+                if yutube_1 in data:
+                    print("Пятница сказала: Открываю ютуб")
+                    engine.say("Открываю ютуб")
+                    engine.runAndWait()
+                    wb.open('https://www.youtube.com/')
+                if yutube_2 in data:
+                    print("Пятница сказала: Открываю ютуб")
+                    engine.say("Открываю ютуб")
+                    engine.runAndWait()
+                    wb.open('https://www.youtube.com/')
+                if yutube_3 in data:
+                    print("Пятница сказала: Открываю ютуб")
+                    engine.say("Открываю ютуб")
+                    engine.runAndWait()
+                    wb.open('https://www.youtube.com/')
+                if yutube_4 in data:
+                    print("Пятница сказала: Открываю ютуб")
+                    engine.say("Открываю ютуб")
+                    engine.runAndWait()
+                    wb.open('https://www.youtube.com/')
+
+                #Ozon
+                if ozon_1 in data:
+                    print("Пятница сказала: Открываю")
+                    engine.say("Открываю")
+                    engine.runAndWait()
+                    wb.open('https://www.ozon.ru/?__rr=1&abt_att=1')
+                if ozon_2 in data:
+                    print("Пятница сказала: Открываю")
+                    engine.say("Открываю")
+                    engine.runAndWait()
+                    wb.open('https://www.ozon.ru/?__rr=1&abt_att=1')
+                if ozon_3 in data:
+                    print("Пятница сказала: Открываю")
+                    engine.say("Открываю")
+                    engine.runAndWait()
+                    wb.open('https://www.ozon.ru/?__rr=1&abt_att=1')
+                if ozon_4 in data:
+                    print("Пятница сказала: Открываю")
+                    engine.say("Открываю")
+                    engine.runAndWait()
+                    wb.open('https://www.ozon.ru/?__rr=1&abt_att=1')
+
+                #Anime
+                if anime_1 in data:
+                    print("Пятница сказала: Включаю аниме")
+                    engine.say("Включаю аниме")
+                    engine.runAndWait()
+                    wb.open("https://jut-su.cool/anime/")
+                if anime_2 in data:
+                    print("Пятница сказала: Включаю аниме")
+                    engine.say("Включаю аниме")
+                    engine.runAndWait()
+                    wb.open("https://jut-su.cool/anime/")
+                if anime_3 in data:
+                    print("Пятница сказала: Включаю аниме")
+                    engine.say("Включаю аниме")
+                    engine.runAndWait()
+                    wb.open("https://jut-su.cool/anime/")
+                if anime_4 in data:
+                    print("Пятница сказала: Включаю аниме")
+                    engine.say("Включаю аниме")
+                    engine.runAndWait()
+                    wb.open("https://jut-su.cool/anime/")
+
+                    
